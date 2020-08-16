@@ -1,0 +1,15 @@
+//
+// RaphPdf
+//
+// @copyright  Copyright (c) 2020-2020 Grégory Muller for the society Debitux.
+// @license    https://www.apache.org/licenses/LICENSE-2.0
+// @link       https://github.com/debitux/raphpdf
+// @since      0.1.0
+//
+
+
+use crate :
+pdf_form_ids = "0.6.0"
+unidecode = "0.3.0"
+ 
+
