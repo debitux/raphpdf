@@ -13,7 +13,7 @@ extern crate unidecode;
 
 use pdf_form_ids::Form;
 use std::fs::File;
-use std::io::{BufRead, BufReader, Result, Seek};
+use std::io::{BufRead, BufReader, Result};
 use std::path::Path;
 use unidecode::unidecode;
 
@@ -85,21 +85,18 @@ pub fn clear(obj: &mut Iris) {
 pub fn read_dsc(obj: &mut String, filep: &Path) -> Result<()> {
     let file = File::open(&filep)?;
     let reader = BufReader::new(&file);
-    let mut i = 0;
     let mut j = 0;
-    for (_index, line) in reader.lines().enumerate() {
+    for (index, line) in reader.lines().enumerate() {
         let line = line?;
-        i += 1;
         if line.contains("Description :") {
-            j = _index + 1;
+            j = index + 1;
         }
     }
-    // println!("i : {}", i);
     let f2 = File::open(&filep)?;
     let r2 = BufReader::new(&f2);
-    for (_index, line) in r2.lines().enumerate() {
+    for (index, line) in r2.lines().enumerate() {
         let line = line?;
-        if _index < j {
+        if index < j {
             continue;
         }
         if line.trim().is_empty() {
@@ -107,7 +104,6 @@ pub fn read_dsc(obj: &mut String, filep: &Path) -> Result<()> {
         }
         let st = line.to_string() + RET;
         obj.push_str(&st);
-        // println!("{}", &line.to_string());
     }
     Ok(())
 }
@@ -147,10 +143,9 @@ pub fn read_file_iris(obj: &mut Iris, filep: &Path) -> Result<()> {
         } else if line.contains("N° : ") {
             obj.num_iris = line.trim_start_matches("N° : ").to_string();
         }
-        //  println!("{}", line);
     }
     let mut s = String::new();
-    read_dsc(&mut s, &filep);
+    read_dsc(&mut s, &filep)?;
     obj.dsc = unidecode(&s);
     Ok(())
 }
@@ -159,10 +154,6 @@ pub fn fill_pdf_iris(obj: &mut Iris) -> Result<()> {
     let path = Path::new("GabaritIris.pdf");
     let mut form = Form::load(&path).expect("error don't load the gabarit");
 
-    /*form.set_text(0, "Commentaire".to_string())
-        .expect("error message");
-    form.set_text(5, "Date d intervention".to_string())
-        .expect("error message");*/
     form.set_text(12, (*obj.dsc).to_string())
         .expect("error message");
     form.set_text(13, (*obj.date_prevu).to_string())

@@ -42,6 +42,7 @@ pub struct Symag {
     pub dcmateriel: String,
     pub sninstalle: String,
     pub trackingaller: String,
+    pub contact: String,
 }
 
 impl Symag {
@@ -66,51 +67,67 @@ impl Symag {
             dcmateriel: "".to_string(),
             sninstalle: "".to_string(),
             trackingaller: "".to_string(),
+            contact: "None".to_string(),
         }
     }
+}
+
+pub fn clear(obj: &mut Symag) {
+    obj.numsv = "".to_string();
+    obj.enseigne = "".to_string();
+    obj.groupe = "".to_string();
+    obj.typedi = "".to_string();
+    obj.codeact = "".to_string();
+    obj.dscactivite = "".to_string();
+    obj.date = "".to_string();
+    obj.idsite = "".to_string();
+    obj.site = "".to_string();
+    obj.adresse = "".to_string();
+    obj.ville = "".to_string();
+    obj.code_postal = "".to_string();
+    obj.tel = "".to_string();
+    obj.dscourte = "".to_string();
+    obj.symptome = "".to_string();
+    obj.dcmateriel = "".to_string();
+    obj.sninstalle = "".to_string();
+    obj.trackingaller = "".to_string();
+    obj.contact = "None".to_string();
 }
 
 pub fn fill_pdf_sygma(obj: &mut Symag) -> Result<()> {
     let desc = unidecode(&obj.dscourte) + RET + &(unidecode(&obj.symptome));
 
-    let info = (*obj.enseigne).to_string()
-        + RET
-        + &obj.groupe
-        + RET
-        + &obj.idsite
-        + RET
-        + &obj.site
-        + RET
-        + &obj.adresse
-        + RET
-        + &obj.ville
-        + RET
-        + &obj.code_postal
-        + RET
-        + &obj.tel
-        + RET;
-
-    let dec_info = unidecode(&info);
-
-    let inter =
-        (*obj.codeact).to_string() + RET + &obj.typedi + RET + &obj.dscactivite + RET + &obj.date;
-
-    let dec_inter = unidecode(&inter);
-
     let path = Path::new("GabaritSymag.pdf");
     let mut form = Form::load(&path).expect("error don't load the gabarit");
 
-    form.set_text(1, (*obj.dcmateriel).to_string())
+    let contel = unidecode(&obj.contact) + RET + RET + &obj.tel;
+    form.set_text(4, desc) // ok
         .expect("error message");
-    form.set_text(3, (*obj.sninstalle).to_string())
+    form.set_text(15, (*obj.dcmateriel).to_string())
         .expect("error message");
-    form.set_text(4, (*obj.numsv).to_string())
+    form.set_text(17, (*obj.sninstalle).to_string())
         .expect("error message");
-    form.set_text(8, desc).expect("error message");
-    form.set_text(15, (*obj.trackingaller).to_string())
+    form.set_text(18, (*obj.trackingaller).to_string())
         .expect("error message");
-    form.set_text(16, dec_info).expect("error message");
-    form.set_text(21, dec_inter).expect("error message");
+    form.set_text(19, (*obj.numsv).to_string())
+        .expect("error message");
+    form.set_text(20, (*obj.idsite).to_string())
+        .expect("error message");
+    form.set_text(21, (*obj.site).to_string())
+        .expect("error message");
+    form.set_text(22, (*obj.adresse).to_string())
+        .expect("error message");
+    form.set_text(23, contel).expect("error message");
+    form.set_text(24, (*obj.code_postal).to_string())
+        .expect("error message");
+    form.set_text(25, (*obj.ville).to_string())
+        .expect("error message");
+    form.set_text(26, (*obj.date).to_string())
+        .expect("error message");
+    form.set_text(27, (*obj.enseigne).to_string())
+        .expect("error message");
+    form.set_text(28, (*obj.typedi).to_string())
+        .expect("error message");
 
     let name_file = "pdf/".to_string() + &obj.numsv + ".pdf";
 
@@ -120,7 +137,6 @@ pub fn fill_pdf_sygma(obj: &mut Symag) -> Result<()> {
 }
 
 pub fn read_file_sygma(obj: &mut Symag, filep: &Path) -> Result<()> {
-    // let path = Path::new("original/file1.txt");
     let file = File::open(&filep)?;
     let reader = BufReader::new(file);
     for (_index, line) in reader.lines().enumerate() {
@@ -129,11 +145,11 @@ pub fn read_file_sygma(obj: &mut Symag, filep: &Path) -> Result<()> {
         if line.contains("Numero de DI :") {
             obj.numsv = line.trim_start_matches("Numero de DI :").to_string();
         } else if line.contains("Enseigne :") {
-            obj.enseigne = (*line).to_string();
+            obj.enseigne = line.trim_start_matches("Enseigne :").to_string();
         } else if line.contains("Groupe Client :") {
             obj.groupe = (*line).to_string();
         } else if line.contains("Type DI :") {
-            obj.typedi = (*line).to_string();
+            obj.typedi = line.trim_start_matches("Type DI :").to_string();
         } else if line.contains("Code Activité :") {
             obj.codeact = (*line).to_string();
         } else if line.contains("Description Activité:") {
@@ -143,17 +159,19 @@ pub fn read_file_sygma(obj: &mut Symag, filep: &Path) -> Result<()> {
                 .trim_start_matches("Date et heure de DPA :")
                 .to_string();
         } else if line.contains("ID Site :") {
-            obj.idsite = (*line).to_string();
+            obj.idsite = line.trim_start_matches("ID Site :").to_string();
         } else if line.contains("Site :") {
-            obj.site = (*line).to_string();
+            if line.contains("Site :+") {
+                obj.tel = line.trim_start_matches("Téléphone du Site :").to_string();
+            } else {
+                obj.site = line.trim_start_matches("Site :").to_string();
+            }
         } else if line.contains("Adresse du site :") {
-            obj.adresse = (*line).to_string();
+            obj.adresse = line.trim_start_matches("Adresse du site :").to_string();
         } else if line.contains("Ville :") {
-            obj.ville = (*line).to_string();
+            obj.ville = line.trim_start_matches("Ville :").to_string();
         } else if line.contains("Code Postal :") {
-            obj.code_postal = (*line).to_string();
-        } else if line.contains("Téléphone du Site :") {
-            obj.tel = (*line).to_string();
+            obj.code_postal = line.trim_start_matches("Code Postal :").to_string();
         } else if line.contains("Description Courte:") {
             obj.dscourte = (*line).to_string();
         } else if line.contains("Symptôme :") {
@@ -169,7 +187,6 @@ pub fn read_file_sygma(obj: &mut Symag, filep: &Path) -> Result<()> {
         } else if line.contains("Numéro de Tracking :") {
             obj.trackingaller = line.trim_start_matches("Numéro de Tracking :").to_string();
         }
-        // println!("{}", line);
     }
     Ok(())
 }

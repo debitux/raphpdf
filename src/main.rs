@@ -12,7 +12,7 @@ extern crate pdf_form_ids;
 pub mod iris;
 pub mod symag;
 
-use iris::{clear, fill_pdf_iris, read_file_iris, Iris};
+use iris::{fill_pdf_iris, read_file_iris, Iris};
 use symag::{fill_pdf_sygma, read_file_sygma, Symag};
 
 use pdf_form_ids::Form;
@@ -29,7 +29,7 @@ fn print_error(mut err: &dyn Error) {
     }
 }
 
-fn affiche_champ(rep: &str) {
+fn _affiche_champ(rep: &str) {
     let path = Path::new(&rep);
     let form = Form::load(&path).expect("error don't load the gabarit");
 
@@ -52,17 +52,13 @@ fn recup(symag_liste: &mut Vec<PathBuf>, iris_liste: &mut Vec<PathBuf>) -> Resul
         } else if ne.contains("iris") {
             iris_liste.push(en);
         }
-        //  println!("symag : {:?}", &symag_liste);
-        //  println!("iris  :  {:?}", &iris_liste);
     }
     Ok(())
 }
 
-fn read_symag() {}
-
 fn main() {
-    //affiche_champ("GabaritSymag2.pdf");
-    //affiche_champ("GabaritIris.pdf");
+    //_affiche_champ("GabaritSymag.pdf");
+    //_affiche_champ("GabaritIris.pdf");
 
     let mut sym = Symag::new();
     let mut iri = Iris::new();
@@ -84,6 +80,7 @@ fn main() {
             print_error(&err);
             std::process::exit(1);
         }
+        symag::clear(&mut sym);
     }
 
     for entry in iris_liste {
@@ -96,6 +93,6 @@ fn main() {
             print_error(&err);
             std::process::exit(1);
         }
-        clear(&mut iri);
+        iris::clear(&mut iri);
     }
 }
