@@ -17,8 +17,11 @@ use std::io::{BufRead, BufReader, Result};
 use std::path::Path;
 use unidecode::unidecode;
 
+#[cfg(target_os = "linux")]
 static RET: &str = "\n";
-//static RET: &str = "\r\n";
+
+#[cfg(target_os = "windows")]
+static RET: &str = "\r\n";
 
 pub struct Symag {
     pub numsv: String,
@@ -66,8 +69,6 @@ impl Symag {
         }
     }
 }
-
-
 
 pub fn fill_pdf_sygma(obj: &mut Symag) -> Result<()> {
     let desc = unidecode(&obj.dscourte) + RET + &(unidecode(&obj.symptome));

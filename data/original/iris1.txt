@@ -1,33 +1,35 @@
-Numero de DI :SV2008130056@@1
-Type DI :MAINTENANCE
-Date et heure de DPA :14/08/2020 17:00
-Enseigne :GAL. LAFAYETTE
-Groupe Client :GALERIES LAFAYETTE
-ID Site :15637
-Site :GL STRASBOURG 0177
-Adresse du site :34, rue du 22 Novembre -
-Ville :STRASBOURG
-Code Postal :67002
-Téléphone du Site :+33388152300
-Contact :
-Téléphone Contact :
-Code Activité :AC_MAINT
-Description Activité:MAINTENANCE
-Commentaire Activité:
-Description Courte:trouverez ci-dessous les informations collectées pour l'inci
-Symptôme : Agence Chronopost de Strasbourg: Parc des Forges - 23/25 Rue Hannah Arendt, 67200 STRASBOURG trouverez ci-dessous les informations collectées pour l'incident cité en référence : • Description: DI TPE VX820 au bureau 2ième étage • Composant impacté: FV-Caisse • Demandeur: GUYLHENE FERY DELEMONTEY • Bénéficiaire: GUYLHENE FERY DELEMONTEY • Lieu: GL STRASBOURG • Description: DI TPE VX820 au bureau 2ième étage
-Code matériel en panne :21366
-Numéro de série du matériel en panne :
-Description du matériel en panne :TPE VERIFONE VX820 192MB SC 3SAM STD KEYPAD CTLS V2 (GL)
-Emplacement du matériel en panne :
-Tag du matériel en panne :
-Code matériel expédié :21366
-Description matériel expédié :TPE VERIFONE VX820 192MB SC 3SAM STD KEYPAD CTLS V2 (GL)
-Numéro de série du matériel expédié:324607851
-Numéro de Tracking :XU805031505FR
-Adresse du Dépôt de livraison :Chronopost 67 23-25 rue Hannah Arendt, Parc des Forges, 67200 Strasbourg
-Ville :strasbourg
-Code Postal :67200
-Compagnie Financière :44 GALERIES LAFAYETTE
+N° : 305510
+Titre : Prestations sur IBIS STRASBOURG - H2563 - Problème écran noir
+Client : ERYMA SAS - SOGETREL
+Date prévue: 16/08/2020 Après midi
+Limite d'intervention :
+Limite de résolution :
+Site d'intervention : IBIS STRASBOURG 1 avenue pierre Mendes France
+CP d'intervention : 67300
+Ville d'intervention : SCHILTIGHEIM
+Contact : M PIERIN Vincent
+Téléphone : 0670835415
+Type : Prestation
+Sous type :
+Catégorie :
+Sous catégorie :
+Modèle du matériel : +
+Description :
 
+ 
 
+Votre technicien devras avant l’intervention contacter le nôtre M PIERIN Vincent tel : 0670835415 afin de le guider et lui apporter des précisions pour la résolution du problème.
+
+IBIS STRASBOURG
+
+1 avenue pierre Mendes France
+
+67300 SCHILTIGHEIM
+
+259674 - H2563 - Problème écran noir
+
+support technique 03 91 84 26 32
+
+Prestations sur IBIS STRASBOURG - H2563 - Problème écran noir
+
+temps estimé 1 Heure

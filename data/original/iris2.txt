@@ -1,31 +1,88 @@
-Numero de DI :SV2008130059@@1
-Type DI :MAINTENANCE
-Date et heure de DPA :14/08/2020 17:00
-Enseigne :GAL. LAFAYETTE
-Groupe Client :GALERIES LAFAYETTE
-ID Site :15637
-Site :GL STRASBOURG 0177
-Adresse du site :34, rue du 22 Novembre -
-Ville :STRASBOURG
-Code Postal :67002
-Téléphone du Site :+33388152300
+N° : 305665
+Titre : Demande intervention
+Client : CSP BUT INTERNATIONAL
+Date prévue:
+Limite d'intervention :
+Limite de résolution :
+Site d'intervention : BUT Rue du Linkling
+CP d'intervention : 57180
+Ville d'intervention : TERVILLE
 Contact :
-Téléphone Contact :
-Code Activité :AC_MAINT
-Description Activité:MAINTENANCE
-Commentaire Activité:
-Description Courte:• Description: DI imprimante 4610 2CR USB au bureau 2ième ét
-Symptôme : Agence Chronopost de Strasbourg: Parc des Forges - 23/25 Rue Hannah Arendt, 67200 STRASBOURG • Description: DI imprimante 4610 2CR USB au bureau 2ième étage • Composant impacté: FV-Caisse • Demandeur: GUYLHENE FERY DELEMONTEY • Bénéficiaire: GUYLHENE FERY DELEMONTEY • Lieu: GL STRASBOURG • Description: DI imprimante 4610 2CR USB au bureau 2ième étage
-Code matériel en panne :20252
-Numéro de série du matériel en panne :
-Description du matériel en panne :IMP IBM AVC MICR 4610-2CR USB POWERED IRON GRAY
-Emplacement du matériel en panne :
-Tag du matériel en panne :
-Code matériel expédié :20252
-Description matériel expédié :IMP IBM AVC MICR 4610-2CR USB POWERED IRON GRAY
-Numéro de série du matériel expédié:41854F9
-Numéro de Tracking :XU805019014FR
-Adresse du Dépôt de livraison :Chronopost 67 23-25 rue Hannah Arendt, Parc des Forges, 67200 Strasbourg
-Ville :strasbourg
-Code Postal :67200
-Compagnie Financière :44 GALERIES LAFAYETTE
+Téléphone :
+Type : BUT
+Sous type : BUT_Maintenance
+Catégorie : BUT_Imprimante EPSON TMH 6000 III + cables
+Sous catégorie :
+Modèle du matériel : EPSON TMH-6000 MICR
+Pièces :
+Référence 	Désignation 	Quantité
+IBUTIMP-TMH6-3U 	spar : Epson TMH6000III-JAC 	1
+TMH6000-3USB-MN-IRIS 	spar : Tmh6000-3 MICR USBB NOIR 	1
+Information sur le transporteur :
+N° expédition : 5748927444275592
+Adresse : ZONE EUROTRANSIT - FONTAINE DES SAINTS
+CP : 57365
+Ville : FLEVY
+Description :
+
+Problème:
+
+Demande de remplacement de l’imprimante
+
+ 
+
+ 
+
+Contre-appel:/
+
+ 
+
+Liste des tests effectués:/
+
+ 
+
+Diagnostique:/
+
+ 
+
+Solution:/
+
+ 
+
+Indications intervention:
+
+Prévoir le remplacement de l'imprimante
+
+ 
+
+Attention – Inter impérative samedi !
+
+ 
+
+ 
+
+N° de caisse : 5
+
+Contact  dans le magasin : CHRISTELLE HIPPERT – 03 82 54 03 03 
+
+Matériel impacté : EPSON TMH-6000 MICR JACF019352 
+
+ 
+
+ 
+
+ 
+
+Procedures:
+
+https://drive.iris-info.com/front/token/1deea6127a6b2ee662ed211bbc050ad1
+
+ 
+
+ 
+
+Pour tout besoin de support technique contacter le support N2 IRIS au 09 88 660 332
+Toute intervention doit être validée par la DSI BUT au 06.86.95.49.40
+Vous ne devez pas quitter le site avant d'avoir eu leur accord.
+
+

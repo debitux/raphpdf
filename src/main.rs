@@ -12,6 +12,7 @@ extern crate pdf_form_ids;
 pub mod iris;
 pub mod symag;
 
+use iris::{clear, fill_pdf_iris, read_file_iris, Iris};
 use symag::{fill_pdf_sygma, read_file_sygma, Symag};
 
 use pdf_form_ids::Form;
@@ -60,9 +61,11 @@ fn recup(symag_liste: &mut Vec<PathBuf>, iris_liste: &mut Vec<PathBuf>) -> Resul
 fn read_symag() {}
 
 fn main() {
-    // affiche_champ("GabaritSymag.pdf");
+    //affiche_champ("GabaritSymag2.pdf");
+    //affiche_champ("GabaritIris.pdf");
 
-    let mut obj = Symag::new();
+    let mut sym = Symag::new();
+    let mut iri = Iris::new();
 
     let mut symag_liste = Vec::new();
     let mut iris_liste = Vec::new();
@@ -72,14 +75,27 @@ fn main() {
         std::process::exit(1);
     }
     for entry in symag_liste {
-        if let Err(err) = read_file_sygma(&mut obj, &entry) {
+        if let Err(err) = read_file_sygma(&mut sym, &entry) {
             print_error(&err);
             std::process::exit(1);
         }
 
-        if let Err(err) = fill_pdf_sygma(&mut obj) {
+        if let Err(err) = fill_pdf_sygma(&mut sym) {
             print_error(&err);
             std::process::exit(1);
         }
+    }
+
+    for entry in iris_liste {
+        if let Err(err) = read_file_iris(&mut iri, &entry) {
+            print_error(&err);
+            std::process::exit(1);
+        }
+
+        if let Err(err) = fill_pdf_iris(&mut iri) {
+            print_error(&err);
+            std::process::exit(1);
+        }
+        clear(&mut iri);
     }
 }
